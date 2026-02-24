@@ -4,6 +4,8 @@
 상태: 진행 중
 설명: 연구 진행 방식 및 상황 요약
 
+<br>
+
 # 인턴 연구 진행
 
 
@@ -25,6 +27,9 @@
 | **Software Identifiers** | DB 조회키가 될 수 있는 식별자(예: CPE, purl 등) 최소 1개 이상 |
 | **Component Hash** | 컴포넌트 아티팩트 해시값(+사용 알고리즘) |
 | **License** | 컴포넌트가 제공되는 라이선스(가능하면 기계처리형, proprietary 포함) |
+
+---
+<br>
 
 ### 새로운 필드 4개
 
@@ -48,18 +53,7 @@
 - **무엇**: 컴포넌트 사용에 적용되는 **라이선스 정보**(가능하면 기계처리형), **proprietary 조건 존재**도 포함. 모르면 “unknown”으로 표시.
 - **왜 중요**: 라이선스/재라이선스 문제는 집행(enforcement) 이슈로 이어져 **보안 지원 약속 이행**까지 영향을 줄 수 있고, 따라서 기관의 **리스크 우선순위**에 반영되어야 한다.
 
----
-
-### Author 필드에 대한 다양한 해석 가능성 문제
-
-- **‘(2) SBOM 생성’**의 실험을 통해 Hatbom, cdxgen을 통해 SBOM을 생성했을 때 Author 필드가 한 번이라도 언급되는 것을 확인할 수 있었다.
-- 다만 해당 SBOM을 확인하면 Author의 주체가 해당 SBOM generator의 생성 사이트(혹은 개발한 회사)가 나온다.
-- 아래는 CISA에서 밝힌 SBOM의 Author 필드에 관한 내용이다.
-
-> The SBOM Author element contains a string that identifies the entity that generated the SBOM for this component. This field is distinct from the Software Producer field, which identifies the producer of the software component. The SBOM Author and the Software Producer fields may be identical if the same entity produced the software component and generated the SBOM. In cases where an entity that did not produce the software component generates the SBOM for the component in question, the fields will be different.
-> 
-- 전문을 보면 Author Element에 대하여 SBOM을 생성한 주체에 대하여 말하고 있다. 이는 SBOM generator을 사용한 사람에 대한 식별자를 나타내는 지 혹은 SBOM generator을 개발한 주체를 작성하라는 것 인지에 대한 자세한 내용이 없는 것을 확인할 수 있다.
-
+<br>
 
 ## (2) SBOM 생성
 
@@ -78,7 +72,7 @@
     1. Hatbom의 경우 원본 소스 파일의 ZIP 파일을 올린 것과 Hmark를 통한 hash ZIP 파일을 올린 것과의 차이점이 존재하였다. → 해당 실험에선 Hatbom을 이용한 SBOM을 생성할 때 hmark를 통해 나온 hash zip 파일을 이용하여 생성한 것을 전제로 한다.
     2. cyclonedx의 경우 go 프로젝트인 Hugo의 SBOM을 생성할 때, @cyclonedx/cdxgen 을 이용한 경우 root 권한 문제, list 파일 인식 문제 등 여러 에러가 발생하였다. 따라서 go proejct의 경우 cyclonedx-gomod를 따로 다운로드 받아서 실행하였다. (cyclonedx/cdxgen 통합 모듈의 정합성이 의심되는 부분이다.)
     
-    
+<br>    
 
 ## (3) SBOM generator 원리 이해하기
 
@@ -157,7 +151,7 @@ https://github.com/anchore/syft/releases/tag/v1.41.1
 
 ---
 
-## (3) 통합 SBOM 생성 프로그램 (prototype)
+## (8) 통합 SBOM 생성 프로그램 (prototype)
 
 - plantuml을 이용하여 work flow 정리
 - prototype을 생성한 이후 피드백 받기
