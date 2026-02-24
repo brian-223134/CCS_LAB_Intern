@@ -4,9 +4,8 @@
 상태: 진행 중
 설명: 연구 진행 방식 및 상황 요약
 
-# 인턴 연구 진행 (피드백 반영)
+# 인턴 연구 진행
 
----
 
 ## (1) CISA Minimal Elements (11개의 field 분석)
 
@@ -61,7 +60,6 @@
 > 
 - 전문을 보면 Author Element에 대하여 SBOM을 생성한 주체에 대하여 말하고 있다. 이는 SBOM generator을 사용한 사람에 대한 식별자를 나타내는 지 혹은 SBOM generator을 개발한 주체를 작성하라는 것 인지에 대한 자세한 내용이 없는 것을 확인할 수 있다.
 
----
 
 ## (2) SBOM 생성
 
@@ -74,13 +72,12 @@
     - **Hatbom(iotcube 2.0)**
     - **Syft**
     - **Trivy**
-    - **cdxgen(CycloneDX)** → go 프로젝트의 경우 범용 cdxgen을 사용했을 때 문제가 발생하여 cdxgen-gomod를 사용하였다.
+    - **cdxgen(CycloneDX)** → Hugo 프로젝트에 대하여 cdxgen의 SBOM 생성 과정 중 문제가 발생하여 cdxgen-gomod를 사용하였기에 해당 내용은 추후 폐기 예정
 
 - **실험 시 발생했던 문제점**
     1. Hatbom의 경우 원본 소스 파일의 ZIP 파일을 올린 것과 Hmark를 통한 hash ZIP 파일을 올린 것과의 차이점이 존재하였다. → 해당 실험에선 Hatbom을 이용한 SBOM을 생성할 때 hmark를 통해 나온 hash zip 파일을 이용하여 생성한 것을 전제로 한다.
     2. cyclonedx의 경우 go 프로젝트인 Hugo의 SBOM을 생성할 때, @cyclonedx/cdxgen 을 이용한 경우 root 권한 문제, list 파일 인식 문제 등 여러 에러가 발생하였다. 따라서 go proejct의 경우 cyclonedx-gomod를 따로 다운로드 받아서 실행하였다. (cyclonedx/cdxgen 통합 모듈의 정합성이 의심되는 부분이다.)
     
-    ---
     
 
 ## (3) SBOM generator 원리 이해하기
@@ -108,7 +105,6 @@
     - 해당 항목은 스크립트에 -E 옵션을 넣었을 때 추가로 설치되는 의존성 패키지를 명시한다.
     - Optional Package로 보면 된다.
 
----
 
 ## (4) SBOM generator의 parsing 방식의 한계 분석
 
@@ -119,13 +115,11 @@
     - syft는 extras를 조건에 상관 없이 dependencies에 추가하는 것을 확인했다.
 - trivy의 경우 Django를 패키지로 인식하는 것을 볼 수 있었다.
 
----
 
 ## (5) 언어 마다 사용하는 프레임워크의 명세서 양식 비교
 
 - 목적: poetry 패키지 매니저가 사용하는 명세서 파일인 poetry.lock의 내용을 통해 외부 의존성을 탐지하는 방식이 바뀐다는 것을 인지했음. 조건부로 추가되는 패키지와 같은 외부 의존성에 추가해야 하는 지에 대한 논란이 있을만한 패키지 처리를 위해 기존 외부 의존성 명세서의 작성 방식에 대해 알아본다.
 
----
 
 ## (6) cdxgen, syft, trivy의 실행시간, 컴포넌트 커버리지, 정확도 측정
 
