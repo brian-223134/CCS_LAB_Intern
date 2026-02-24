@@ -126,6 +126,7 @@
     - **TP**: ground truth에 있으며 SBOM의 component(s)에 있는 경우
     - FP: ground truth에 없지만 SBOM의 component(s)에 있는 경우
     - **FN**: ground truth에 있지만 SBOM의 component(s)에 없는 경우
+- 테스트 내용: https://github.com/brian-223134/Projects-s-SBOM-Results/tree/main/code/analyze
 
 [테스트 결과](%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EA%B2%B0%EA%B3%BC%202f561b25f58980728cc4c1480eb65fc5.csv)
 
